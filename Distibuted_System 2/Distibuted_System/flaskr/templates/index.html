@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .selected {
+            background-color: #ffa500 !important;
+            color: white !important;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>搶票系統</h2>
+        <form method="POST" action="/button-press">
+            <div class="form-group">
+                <label for="studentId">學號</label>
+                <input type="text" id="studentId" name="studentId" required>
+            </div>
+            <div class="form-group button-container">
+                <button type="button" class="button" id="option1" onclick="selectOption('A', this)">A</button>
+                <button type="button" class="button button-primary" id="option2" onclick="selectOption('B', this)">B</button>
+                <button type="button" class="button button-danger" id="option3" onclick="selectOption('C', this)">C</button>
+            </div>
+            <input type="hidden" id="selectedOption" name="selectedOption">
+            <div class="form-group">
+                <button type="submit" class="submit-button">搶票</button>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function selectOption(option, button) {
+            // Remove the 'selected' class from all buttons
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+
+            // Add the 'selected' class to the clicked button
+            button.classList.add('selected');
+
+            // Set the selected option in the hidden input field
+            document.getElementById('selectedOption').value = option;
+
+            // Optional: show an alert with the selected option
+            alert('你選擇了: ' + option);
+        }
+    </script>
+</body>
+</html>
