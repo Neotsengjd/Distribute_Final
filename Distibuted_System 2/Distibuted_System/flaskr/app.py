@@ -40,9 +40,9 @@ def button_press():
         for future in completed_futures:
             success = future.result()
             if success:
-                return render_template('firstPage.html') # Got ticket
+                return render_template('success.html')
             else:
-                return render_template('firstPage.html') # No ticket
+                return render_template('fail.html') 
             future_list.remove(future)
             
     

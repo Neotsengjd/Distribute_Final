@@ -65,19 +65,15 @@ def main(ticket, buyer):
         print(f"Processing ticket {ticket} for {buyer}...")
         zk = KazooClient(hosts='127.0.0.1:2181')
         zk.start(timeout=10)
-        #path = os.path.join('/ticket', ticket, 'quantity')
-        #quantity, _ = zk.get(path)
-        quantity = 1
-        if quantity <= 0:
+        
+        available_server = zk.get_children('/server')
+        if len(available_server) == 0:
             return False
         else:
-            available_server = zk.get_children('/server')
-            if len(available_server) == 0:
-                return False
-            else:
-                service_state =  start_service(zk, ticket)
-                zk.stop()
-                return service_state
+            service_state =  start_service(zk, ticket)
+            zk.stop()
+            return service_state
+        
     except KazooTimeoutError:
         print("Zookeeper connection timed out")
     except KazooException as e:
