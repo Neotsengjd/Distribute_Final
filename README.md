@@ -1,5 +1,5 @@
 # Introduction
-This is a simple ticketing system using the distributed architecture of Zookeeper.__ 
+This is a simple ticketing system using the distributed architecture of Zookeeper.<br />
 We applied Zookeeper not just as a database tool, but also for back server load balancing to prevent crashes due to overload situationss. 
 
 # Zookeeper setup
