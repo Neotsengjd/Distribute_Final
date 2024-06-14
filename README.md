@@ -43,7 +43,7 @@ python3 server2.py
 ```
 python3 server3.py 
 ```
-## Start the app
+## Start the system
 ```
 flask run app.py
 ```
