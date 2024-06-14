@@ -13,7 +13,7 @@ In the begining, you have to create the conf1 and conf2 folder. In these two fol
 Then, we can refer to the example built in Zookeeper.
 In our given Download.zip, we have already default the settings, all you need to revise the "dataDir" path to your own path. 
 # watch zookeeper server by client
-You can watch the znode in the zookeeper server owing to connect by client 
+You can watch the znode in the zookeeper server by connecting to server via client 
 ```
 bin/zkCli.sh -server localhost:2181
 ```
