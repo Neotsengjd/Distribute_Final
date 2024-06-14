@@ -31,7 +31,6 @@ def button_press():
         path = f"/data/ticket/{ticket}/quantity"
         quantity, _ = zk.get(path)
         print(quantity.decode())
-        print("-------------")
         if int(quantity.decode()) < 1:
             return render_template('fail.html')
 
