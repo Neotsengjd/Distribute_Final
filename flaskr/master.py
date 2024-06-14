@@ -34,7 +34,7 @@ def connect_to_server(ip, port, ticket):
 
 
 def start_service(zk, ticket):
-   try:
+    try:
         children = zk.get_children('/server')
         while True:
             if len(children) == 0:
