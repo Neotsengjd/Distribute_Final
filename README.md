@@ -27,6 +27,7 @@ You can watch the znode in the zookeeper server by connecting to server via zook
 ```
 bin/zkCli.sh -server localhost:2181
 ```
+For more detailed API operations, please check out official document https://zookeeper.apache.org/doc/current/zookeeperCLI.html
 
 ---
 
