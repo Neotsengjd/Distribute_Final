@@ -1,8 +1,8 @@
-### Introduction
+# Introduction
 This is a simple ticketing system using the distributed architecture of Zookeeper. 
 We applied Zookeeper not just as a database tool, but also for back server load balancing to prevent crashes due to overload situationss. 
 
-### Zookeeper setup
+# Zookeeper setup
 ## Configuration file setup
 First of all, unzip the apache-zookeeper pack, and you'll have to look into the conf1 and conf2 folder. In these two folders, we need to modify the data path in zoo.cfg file respectively.
 For example:
@@ -28,7 +28,7 @@ You can watch the znode in the zookeeper server by connecting to server via zook
 bin/zkCli.sh -server localhost:2181
 ```
 
-### Ticketing system
+# Ticketing system
 ## Activate back server
 run server1, server2, server3 on different terminal
 ```
