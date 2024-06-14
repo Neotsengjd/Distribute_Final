@@ -54,7 +54,7 @@ def start_service(zk, ticket):
                         time.sleep(5)
                         zk.delete(lock_path)
                         return True
-    except KazooException as e:
+   except KazooException as e:
         print(f"KazooClient error when provide service: {e}")       
                 
             
