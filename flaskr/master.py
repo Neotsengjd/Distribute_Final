@@ -34,27 +34,28 @@ def connect_to_server(ip, port, ticket):
 
 
 def start_service(zk, ticket):
-   
-    children = zk.get_children('/server')
-    while True:
-        if len(children) == 0:
-            return False
-        else:
-            for child in children:
-                child_path = os.path.join('/server', child)
-                lock_path = os.path.join('/server', child, '/lock')
-                if zk.exists(lock_path):
-                    continue
-                else:
-                    zk.create(lock_path, ephemeral=True)
-                    data, _ = zk.get(child_path)
-                    ip, port = data.decode().split(":")
-                    print(f"Connecting to server {ip}:{port} ...")
-                    connect_to_server(ip, port, ticket)
-                    time.sleep(5)
-                    zk.delete(lock_path)
-                    return True
-                       
+   try:
+        children = zk.get_children('/server')
+        while True:
+            if len(children) == 0:
+                return False
+            else:
+                for child in children:
+                    child_path = os.path.join('/server', child)
+                    lock_path = os.path.join('/server', child, '/lock')
+                    if zk.exists(lock_path):
+                        continue
+                    else:
+                        zk.create(lock_path, ephemeral=True)
+                        data, _ = zk.get(child_path)
+                        ip, port = data.decode().split(":")
+                        print(f"Connecting to server {ip}:{port} ...")
+                        connect_to_server(ip, port, ticket)
+                        time.sleep(5)
+                        zk.delete(lock_path)
+                        return True
+    except KazooException as e:
+        print(f"KazooClient error when provide service: {e}")       
                 
             
 
