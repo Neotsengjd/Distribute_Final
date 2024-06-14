@@ -40,7 +40,7 @@ def button_press():
         if len(future_list) < 3 and first_use:
             first_use = False
             print("{} -> Starting a new service...".format(buyer))
-            future = executor.submit(service.main, ticket, buyer)
+            future = executor.submit(master.main, ticket, buyer)
             future_list.append(future)
             while True:
                 if future.done():
