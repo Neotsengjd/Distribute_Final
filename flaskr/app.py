@@ -1,6 +1,6 @@
 from re import T
 import time
-import service
+import master
 import concurrent.futures
 from flask import Flask, render_template, request
 from kazoo.client import KazooClient
