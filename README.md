@@ -28,9 +28,11 @@ You can watch the znode in the zookeeper server by connecting to server via zook
 bin/zkCli.sh -server localhost:2181
 ```
 
+---
+
 # Ticketing system
 ## Activate back server
-run server1, server2, server3 on different terminal
+run server1, server2, server3 on different terminal respectively
 ```
 python3 server1.py 
 ```
