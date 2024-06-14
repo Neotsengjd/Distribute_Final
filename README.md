@@ -1,25 +1,30 @@
-# Introduction
-This is a simple ticketing system. Using the distributed architecture of Zookeeper, We applied Zookeeper not just as a database tool, but also for server load balancing to prevent crashes due to server overload. 
+## Introduction
+This is a simple ticketing system using the distributed architecture of Zookeeper. 
+We applied Zookeeper not just as a database tool, but also for server load balancing to prevent crashes due to server overload. 
 
-# Activate Zookeeper server
-After downloding the apache-zookeeper, activate two zookeeper server on two different terminal about: 
+## Activate Zookeeper server
+After downloding the apache-zookeeper, activate two zookeeper server on two different terminals using the following commands: 
+
 ```
 bin/zkServer.sh start-foreground conf1/zoo.cfg
 ```
+
 ```
 bin/zkServer.sh start-foreground conf2/zoo.cfg
 ```
-In the begining, you have to create the conf1 and conf2 folder. In these two folders, we need to create zoo.cfg respectively. 
+
+In the beginning, you have to create the conf1 and conf2 folder. In these two folders, we need to modify zoo.cfg file respectively. 
 Then, we can refer to the example built in Zookeeper.
 In our given Download.zip, we have already default the settings, all you need to revise the "dataDir" path to your own path. 
-# watch zookeeper server by client
+
+## Monitor zookeeper server by client
 You can watch the znode in the zookeeper server by connecting to server via client 
 ```
 bin/zkCli.sh -server localhost:2181
 ```
 Zookeeper APIs are available.
-# Activate ticket server
+## Activate ticket server
 run server1, server2, server3 on different terminal
 
-# Start the app
+## Start the app
 flask run app.py

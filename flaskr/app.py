@@ -1,6 +1,6 @@
 from re import T
 import time
-import service
+import master
 import concurrent.futures
 from flask import Flask, render_template, request
 from kazoo.client import KazooClient
@@ -31,7 +31,7 @@ def button_press():
         if len(running_futures) < 3 and first_use:
             first_use = False
             print("Starting a new service...")
-            future = executor.submit(service.main, ticket, buyer)
+            future = executor.submit(master.main, ticket, buyer)
             future_list.append(future)
         else:
             print("Waiting for a available server...")
