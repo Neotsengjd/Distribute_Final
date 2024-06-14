@@ -59,7 +59,7 @@ try:
 
         # try to acquire ticket lock
         while True:
-            print("Waiting for lock...")
+            #print("Waiting for lock...")
             if ticket_lock.acquire(blocking=False): 
                 msg = "Ticket lock for " + target_ticket + " acquired"
                 print(msg)
@@ -67,7 +67,7 @@ try:
                 store_log_entry(zk, log_path=logPath, log_entry=logEntry)
                 break
 
-            time.sleep(1)
+            #time.sleep(1)
 
         try: 
             # check the quantity of target ticket and modify ticket quantity
