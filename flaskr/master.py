@@ -48,12 +48,10 @@ def start_service(zk, ticket):
                 else:
                     zk.create(lock_path, ephemeral=True)
                     data, _ = zk.get(child_path)
-                    print(data.decode())
                     ip, port = data.decode().split(":")
-                   
-                    print(f"Connecting to server {ip}...")
+                    print(f"Connecting to server {ip}:{port} ...")
                     connect_to_server(ip, port, ticket)
-                    time.sleep(10)
+                    time.sleep(5)
                     zk.delete(lock_path)
                     return True
                        
