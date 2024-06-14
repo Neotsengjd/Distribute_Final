@@ -14,7 +14,6 @@ def generate_log_entry(lv, msg):
 
 def store_log_entry(zk, log_path, log_entry):
     zk.create(log_path + "/entry_", log_entry.encode('utf-8'), sequence=True)
-    #print(f"Log entry {entry_number} stored in {znode_path}")
 
 host = '127.0.1.1:2181'
 zk = KazooClient(hosts=host)
@@ -31,11 +30,10 @@ if not zk.exists("/server"):
 # create reference node of this server on zookeeper
 port_number = 8001
 my_IP = socket.gethostbyname(socket.gethostname())
-#my_IP = "192.168.66.32"
 myPath = zk.create("/server/server_", (my_IP + ":" + str(port_number)).encode('utf-8'), ephemeral=True, sequence=True)
 logPath = zk.create("/data/log/server_", sequence=True, makepath=True)
 
-# Start provide service
+# Start providing service
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     server_socket.bind((my_IP, port_number))
@@ -66,7 +64,6 @@ try:
                 logEntry = generate_log_entry(0, msg)
                 store_log_entry(zk, log_path=logPath, log_entry=logEntry)
                 break
-
             #time.sleep(1)
 
         try: 
