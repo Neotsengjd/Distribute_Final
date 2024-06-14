@@ -46,5 +46,5 @@ python3 server3.py
 ```
 ## Start the system
 ```
-flask run app.py
+python3 app.py
 ```
