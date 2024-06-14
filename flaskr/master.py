@@ -18,7 +18,7 @@ def connect_to_server(ip, port, ticket):
 
         try:
             client_socket.connect((ip, int(port)))
-
+            
             client_socket.sendall(ticket.encode())
 
             message_from_server = client_socket.recv(1024).decode()
@@ -34,7 +34,7 @@ def connect_to_server(ip, port, ticket):
 
 
 def start_service(zk, ticket):
-
+   
     children = zk.get_children('/server')
     while True:
         if len(children) == 0:
@@ -50,22 +50,22 @@ def start_service(zk, ticket):
                     data, _ = zk.get(child_path)
                     print(data.decode())
                     ip, port = data.decode().split(":")
-
+                   
                     print(f"Connecting to server {ip}...")
                     connect_to_server(ip, port, ticket)
                     time.sleep(10)
                     zk.delete(lock_path)
                     return True
-
-
-
+                       
+                
+            
 
 def main(ticket, buyer):
     try:
         print(f"Processing ticket {ticket} for {buyer}...")
         zk = KazooClient(hosts='127.0.0.1:2181')
         zk.start(timeout=10)
-
+        
         available_server = zk.get_children('/server')
         if len(available_server) == 0:
             return False
@@ -73,7 +73,7 @@ def main(ticket, buyer):
             service_state =  start_service(zk, ticket)
             zk.stop()
             return service_state
-
+        
     except KazooTimeoutError:
         print("Zookeeper connection timed out")
     except KazooException as e:

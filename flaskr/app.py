@@ -1,6 +1,6 @@
 from re import T
 import time
-import master
+import service
 import concurrent.futures
 from flask import Flask, render_template, request
 from kazoo.client import KazooClient
@@ -21,40 +21,55 @@ def login():
 
 
 @app.route('/button-press', methods=['POST'])
-def button_press():
+def button_press(): 
     buyer = request.form.get('studentId')
     ticket = request.form.get('selectedOption')
     first_use = True
     while True:
-        global future_list
-        running_futures = [f for f in future_list if not f.done()]
-        if len(running_futures) < 3 and first_use:
-            first_use = False
-            print("Starting a new service...")
-            future = executor.submit(master.main, ticket, buyer)
-            future_list.append(future)
-        else:
-            print("Waiting for a available server...")
-            time.sleep(5)
-
-        completed_futures = [f for f in future_list if f.done()]
-
         zk = KazooClient(hosts='127.0.0.1:2181')
         zk.start(timeout=10)
         path = f"/data/ticket/{ticket}/quantity"
         quantity, _ = zk.get(path)
+        print(quantity.decode())
+        print("-------------")
         if int(quantity.decode()) < 1:
             return render_template('fail.html')
 
+        global future_list
+        #running_futures = [f for f in future_list if not f.done()]
+
+        if len(future_list) < 3 and first_use:
+            first_use = False
+            print("{} -> Starting a new service...".format(buyer))
+            future = executor.submit(service.main, ticket, buyer)
+            future_list.append(future)
+            while True:
+                if future.done():
+                    break
+        else:           
+            print("{} -> Waiting for a available server...".format(buyer))
+            time.sleep(5)
+    
+    
+        completed_futures = [f for f in future_list if f.done()]
+        
+        #zk = KazooClient(hosts='127.0.0.1:2181')
+        #zk.start(timeout=10)
+        #path = f"/data/ticket/{ticket}/quantity"
+        #quantity, _ = zk.get(path)
+        #if int(quantity.decode()) < 1:
+        #   return render_template('fail.html')
+
         for future in completed_futures:
             success = future.result()
+            future_list.remove(future)
             if success:
                 return render_template('success.html')
             else:
-                return render_template('fail.html')
-            future_list.remove(future)
-
-
-
+                return render_template('fail.html') 
+            
+    
+        
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+    
