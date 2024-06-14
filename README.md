@@ -2,7 +2,7 @@
 This is a simple ticketing system. Using the distributed architecture of Zookeeper, We applied Zookeeper not just as a database tool, but also for server load balancing to prevent crashes due to server overload. 
 
 # Activate Zookeeper server
-After downloding the apache-zookeeper, activate two zookeeper server about: 
+After downloding the apache-zookeeper, activate two zookeeper server on two different terminal about: 
 ```
 bin/zkServer.sh start-foreground conf1/zoo.cfg
 ```
@@ -19,6 +19,7 @@ bin/zkCli.sh -server localhost:2181
 ```
 Zookeeper APIs are available.
 # Activate ticket server
-run server1, server2, server3
+run server1, server2, server3 on different terminal
 
-# Activate the app
+# Start the app
+flask run app.py
