@@ -44,13 +44,18 @@ def button_press():
             future_list.append(future)
             while True:
                 if future.done():
-                    break
+                    success = future.result()
+                    future_list.remove(future)
+                    if success:
+                        return render_template('success.html')
+                    else:
+                        return render_template('fail.html') 
         else:           
             print("{} -> Waiting for a available server...".format(buyer))
             time.sleep(5)
     
     
-        completed_futures = [f for f in future_list if f.done()]
+       
         
         #zk = KazooClient(hosts='127.0.0.1:2181')
         #zk.start(timeout=10)
@@ -59,14 +64,6 @@ def button_press():
         #if int(quantity.decode()) < 1:
         #   return render_template('fail.html')
 
-        for future in completed_futures:
-            success = future.result()
-            future_list.remove(future)
-            if success:
-                return render_template('success.html')
-            else:
-                return render_template('fail.html') 
-            
     
         
 if __name__ == '__main__':
