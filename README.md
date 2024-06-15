@@ -2,10 +2,26 @@
 This is a simple ticketing system using the distributed architecture of Zookeeper. <br />
 We utilize Zookeeper not just as a database tool, but also provide back server load balancing to prevent crashes due to overload situations. 
 <br />
+
 # Zookeeper setup
+# JDK environment
+Since apache-zookeeper is implemented in Java, we need a Java environment to run Zookeeper <br />
+To install the OpenJDK version of Java, first update your ```apt```package index:
+```
+sudo apt update
+```
+Next, check if Java is already installed:
+```
+java -version
+```
+If not, use the following command to install a default JDK
+```
+sudo apt install default-jdk 
+```
+
 ## Configuration file setup
-First of all, unzip the apache-zookeeper pack and look into the conf1 and conf2 folder. <br />
-In these two folders, we need to modify the data path in zoo.cfg file respectively. <br />
+First of all, unzip the apache-zookeeper pack and look into the ```conf1``` and ```conf2``` folder. <br />
+In these two folders, we need to modify the data path in ```zoo.cfg```  respectively. <br />
 For example:
 ```
 dataDir = /yourLocalPath/apache-zookeeper-3.8.4-bin/data1
