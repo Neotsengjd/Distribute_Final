@@ -11,7 +11,6 @@ from kazoo.handlers.threading import KazooTimeoutError
 
 
 
-
 def connect_to_server(ip, port, ticket):
     while True:
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -41,21 +40,20 @@ def start_service(zk, ticket):
                 return False
             else:
                 for child in children:
-                    child_path = os.path.join('/server', child)
-                    lock_path = os.path.join('/server', child, '/lock')
+                    child_path = '/server/' + child 
+                    lock_path =  '/server/' + child.split("_")[1] 
                     if zk.exists(lock_path):
                         continue
                     else:
-                        zk.create(lock_path, ephemeral=True)
+                        zk.create(lock_path)
                         data, _ = zk.get(child_path)
                         ip, port = data.decode().split(":")
                         print(f"Connecting to server {ip}:{port} ...")
                         connect_to_server(ip, port, ticket)
-                        time.sleep(5)
                         zk.delete(lock_path)
                         return True
-   except KazooException as e:
-        print(f"KazooClient error when provide service: {e}")       
+    except Exception as e:
+        print(f"Kazoo connect error : {e}")
                 
             
 
