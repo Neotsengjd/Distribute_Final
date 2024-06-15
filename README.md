@@ -60,11 +60,23 @@ python3 server2.py
 python3 server3.py 
 ```
 ## Start the system
-Enter flaskr folder and run the app
+Enter ```flaskr``` folder and run the app
 ```
 python3 app.py
 ```
 Click on the generated link and you'll be able to open the ticketing system website.
 
 # Additional tools
-We also 
+We also provide a set of tools that could make it more convenient to manage the ticketing system. <br />
+In the folder ```Server``` there's a ```zkTool.py``` file. <br />
+You can simply execute the program and make use of the functions.
+```
+python3 zkTool.py
+```
+and it would output:
+```
+Enter 1 for ticket quantity reset
+Enter 2 for znode tree deletion   
+Enter 3 for log data look up
+```
+Enter the desired number and ```zkTool.py``` would complete the task.
