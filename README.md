@@ -49,7 +49,7 @@ pip install flask
 ```
 
 ## Activate back server
-Enter Server folder and run server1, server2, server3 on different terminals.
+Enter ```Server``` folder and run server1, server2, server3 on different terminals.
 ```
 python3 server1.py 
 ```
@@ -65,3 +65,6 @@ Enter flaskr folder and run the app
 python3 app.py
 ```
 Click on the generated link and you'll be able to open the ticketing system website.
+
+# Additional tools
+We also 
