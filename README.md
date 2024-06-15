@@ -4,7 +4,7 @@ We utilize Zookeeper not just as a database tool, but also provide back server l
 <br />
 
 # Zookeeper setup
-# JDK environment
+## JDK environment
 Since apache-zookeeper is implemented in Java, we need a Java environment to run Zookeeper <br />
 To install the OpenJDK version of Java, first update your ```apt```package index:
 ```
