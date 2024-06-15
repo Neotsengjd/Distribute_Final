@@ -43,7 +43,7 @@ pip install kazoo
 
 ### Flask
 Flask is a lightweight and flexible web framework for Python, which allows us to build a ticketing system website. <br />
-Use the following command to install kazoo:
+Use the following command to install flask:
 ```
 pip install flask
 ```
