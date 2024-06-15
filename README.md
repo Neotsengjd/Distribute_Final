@@ -30,7 +30,7 @@ dataDir = /yourLocalPath/apache-zookeeper-3.8.4-bin/data1
 ```
 
 ## Activate Zookeeper server
-After setting up zoo.cfg files, we can activate Zookeeper servers on two different terminals using the following commands: 
+After setting up ```zoo.cfg files```, we can activate Zookeeper servers on two different terminals using the following commands: 
 
 ```
 bin/zkServer.sh start-foreground conf1/zoo.cfg
