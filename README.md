@@ -49,7 +49,7 @@ pip install flask
 ```
 
 ## Activate back server
-Run server1, server2, server3 on different terminal respectively.
+Entering Server folder and run server1, server2, server3 on different terminals.
 ```
 python3 server1.py 
 ```
@@ -60,6 +60,7 @@ python3 server2.py
 python3 server3.py 
 ```
 ## Start the system
+Enter flaskr folder and run the app
 ```
 python3 app.py
 ```
