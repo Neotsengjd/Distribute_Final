@@ -23,8 +23,8 @@ bin/zkServer.sh start-foreground conf2/zoo.cfg
 ```
 This will start a zookeeper ensemble, which is necessary to our system.
 
-## Monitor zookeeper server using Zookeeper client API
-You can watch the znodes in the zookeeper server by connecting to server via Zookeeper API.
+## Monitor Zookeeper server using Zookeeper client API
+You can watch the znodes in the zookeeper server via Zookeeper API.
 ```
 bin/zkCli.sh -server localhost:2181
 ```
