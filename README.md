@@ -22,6 +22,7 @@ sudo apt install default-jdk
 
 ## Configuration file setup
 First of all, unzip the apache-zookeeper pack and look into the ```conf1``` and ```conf2``` folder. <br />
+<br />
 In these two folders, we need to modify the data path in ```zoo.cfg```  respectively. <br />
 For example:
 ```
@@ -53,6 +54,7 @@ For more detailed API operations, please check out official document https://zoo
 ## Kazoo and Flask
 ### Kazoo
 Kazoo is a Python library designed to make working with Zookeeper a more hassle-free experience that is less prone to errors. <br />
+<br />
 Use the following command to install kazoo:
 ```
 pip install kazoo
@@ -60,6 +62,7 @@ pip install kazoo
 
 ### Flask
 Flask is a lightweight and flexible web framework for Python, which allows us to build a ticketing system website. <br />
+<br />
 Use the following command to install flask:
 ```
 pip install flask
@@ -85,6 +88,7 @@ Click on the generated link and you'll be able to open the ticketing system webs
 
 # Additional tools
 We also provide a set of tools that could make it more convenient to manage the ticketing system. <br />
+<br />
 In the folder ```Server``` there's a ```zkTool.py``` file. <br />
 You can simply execute the program and make use of the functions.
 ```
