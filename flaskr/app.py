@@ -30,12 +30,10 @@ def button_press():
         zk.start(timeout=10)
         path = f"/data/ticket/{ticket}/quantity"
         quantity, _ = zk.get(path)
-        print(quantity.decode())
         if int(quantity.decode()) < 1:
             return render_template('fail.html')
 
         global future_list
-        #running_futures = [f for f in future_list if not f.done()]
 
         if len(future_list) < 3 and first_use:
             first_use = False
@@ -53,17 +51,6 @@ def button_press():
         else:           
             print("{} -> Waiting for a available server...".format(buyer))
             time.sleep(5)
-    
-    
-       
-        
-        #zk = KazooClient(hosts='127.0.0.1:2181')
-        #zk.start(timeout=10)
-        #path = f"/data/ticket/{ticket}/quantity"
-        #quantity, _ = zk.get(path)
-        #if int(quantity.decode()) < 1:
-        #   return render_template('fail.html')
-
     
         
 if __name__ == '__main__':
