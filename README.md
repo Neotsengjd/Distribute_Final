@@ -3,6 +3,8 @@ This is a simple ticketing system using the distributed architecture of Zookeepe
 We utilize Zookeeper not just as a database tool, but also provide back server load balancing to prevent crashes due to overload situations. 
 <br />
 
+---
+
 # Zookeeper setup
 ## JDK environment
 Since apache-zookeeper is implemented in Java, we need a Java environment to run Zookeeper <br />
