@@ -88,6 +88,8 @@ python3 app.py
 ```
 Click on the generated link and you'll be able to open the ticketing system website.
 
+---
+
 # Additional tools
 We also provide a set of tools that could make it more convenient to manage the ticketing system. <br />
 <br />
